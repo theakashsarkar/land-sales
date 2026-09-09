@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" font-family="Georgia, serif">
+  <rect width="1000" height="640" fill="#F4F0E5"/>
+  <!-- expressway -->
+  <path d="M60 470C280 420 640 420 940 350" stroke="#DCD5BF" stroke-width="64" fill="none"/>
+  <path d="M60 470C280 420 640 420 940 350" stroke="#F0EBDD" stroke-width="48" fill="none"/>
+  <path d="M70 468C280 419 640 419 932 349" stroke="#C9B98F" stroke-width="2.5" stroke-dasharray="18 14" fill="none"/>
+  <text x="500" y="520" text-anchor="middle" font-size="16" fill="#8A8468" letter-spacing="4">300-FEET PURBACHAL EXPRESSWAY</text>
+  <!-- plot grid -->
+  <g fill="#E7E0CB" stroke="#CFC7AE" stroke-width="1">
+    <!-- corporate row (south of spine, facing expressway) -->
+    <g>
+      <rect x="120" y="120" width="240" height="130" fill="#E2D9BE"/>
+      <path d="M200 120v130M280 120v130M120 185h240" fill="none"/>
+    </g>
+    <!-- retail boulevard -->
+    <g>
+      <rect x="420" y="120" width="250" height="130"/>
+      <path d="M490 120v130M560 120v130M630 120v130M420 185h250" fill="none"/>
+    </g>
+    <!-- mixed use -->
+    <g>
+      <rect x="730" y="120" width="150" height="130"/>
+      <path d="M805 120v130M730 185h150" fill="none"/>
+    </g>
+    <!-- central plaza -->
+    <rect x="420" y="330" width="250" height="110" rx="16" fill="#BBD2A8"/>
+    <!-- parking / logistics -->
+    <g>
+      <rect x="120" y="330" width="240" height="110"/>
+      <path d="M200 330v110M280 330v110" fill="none"/>
+    </g>
+    <g>
+      <rect x="730" y="330" width="150" height="110"/>
+      <path d="M805 330v110" fill="none"/>
+    </g>
+  </g>
+  <!-- internal roads -->
+  <g fill="none" stroke="#FFFFFF" stroke-linecap="round">
+    <path d="M80 290h810" stroke-width="30"/>
+    <path d="M390 110v340" stroke-width="22"/>
+    <path d="M700 110v340" stroke-width="22"/>
+  </g>
+  <g fill="none" stroke="#C9B98F" stroke-width="2" stroke-dasharray="14 12">
+    <path d="M92 290h790"/>
+  </g>
+  <!-- convention center marker -->
+  <g>
+    <rect x="470" y="356" width="150" height="26" rx="13" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <text x="545" y="374" text-anchor="middle" font-size="13" fill="#3F4A3C" letter-spacing="1.5">CONVENTION</text>
+  </g>
+  <g font-size="16" fill="#5A664F" letter-spacing="3" text-anchor="middle">
+    <text x="240" y="270">CORPORATE</text>
+    <text x="545" y="270">RETAIL BOULEVARD</text>
+    <text x="805" y="270">MIXED-USE</text>
+    <text x="240" y="470" font-size="13" fill="#8A8468">PARKING &amp; LOGISTICS</text>
+    <text x="805" y="400" font-size="13" fill="#8A8468">SERVICES</text>
+  </g>
+  <g transform="translate(920,90)">
+    <circle r="24" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <path d="M0 -15l6.5 20-6.5-4.6-6.5 4.6z" fill="#17402F"/>
+    <text y="36" text-anchor="middle" font-size="12" fill="#5A664F" letter-spacing="2">N</text>
+  </g>
+</svg>

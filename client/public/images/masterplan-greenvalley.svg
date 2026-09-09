@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" font-family="Georgia, serif">
+  <rect width="1000" height="640" fill="#F4F0E5"/>
+  <!-- open ground -->
+  <g fill="#EAE4D2" stroke="#DCD5BF" stroke-width="1">
+    <rect x="70" y="60" width="860" height="520" rx="6"/>
+  </g>
+  <!-- plot grids -->
+  <g fill="#E9E2CE" stroke="#CFC7AE" stroke-width="1">
+    <!-- Block A (top-left) -->
+    <g id="plotsA">
+      <rect x="110" y="100" width="240" height="150" fill="#E7E0CB"/>
+      <path d="M150 100v150M190 100v150M230 100v150M270 100v150M110 150h240M110 200h240" fill="none"/>
+    </g>
+    <!-- Block B (top-right) -->
+    <g>
+      <rect x="420" y="100" width="240" height="150" fill="#E7E0CB"/>
+      <path d="M460 100v150M500 100v150M540 100v150M580 100v150M420 150h240M420 200h240" fill="none"/>
+    </g>
+    <!-- Block C (bottom-right) -->
+    <g>
+      <rect x="620" y="380" width="270" height="160" fill="#E7E0CB"/>
+      <path d="M666 380v160M712 380v160M758 380v160M804 380v160M850 380v160M620 434h270M620 488h270" fill="none"/>
+    </g>
+    <!-- Block D (bottom-left) -->
+    <g>
+      <rect x="110" y="390" width="220" height="150" fill="#E7E0CB"/>
+      <path d="M165 390v150M220 390v150M275 390v150M110 440h220M110 490h220" fill="none"/>
+    </g>
+  </g>
+  <!-- central park -->
+  <g>
+    <rect x="400" y="310" width="180" height="120" rx="18" fill="#BBD2A8"/>
+    <path d="M420 400c20-30 40-36 62-18s44 10 58-14" stroke="#93B77F" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="440" cy="340" r="9" fill="#93B77F"/>
+    <circle cx="540" cy="336" r="6" fill="#93B77F"/>
+    <circle cx="500" cy="360" r="7" fill="#7FA96C"/>
+  </g>
+  <!-- lake -->
+  <path d="M660 130c50-18 120-14 158 22s30 92-14 118-120 24-158-10-36-112 14-130z" fill="#AFD0D6"/>
+  <path d="M676 152c40-14 96-10 126 18s22 70-12 90-96 18-126-8-28-86 12-100z" fill="#C4DEE2" opacity="0.8"/>
+  <!-- roads -->
+  <g fill="none" stroke="#FFFFFF" stroke-linecap="round">
+    <path d="M80 290h840" stroke-width="34"/>
+    <path d="M380 70v500" stroke-width="30"/>
+    <path d="M600 290v250" stroke-width="24"/>
+    <path d="M110 370h250" stroke-width="22"/>
+    <path d="M640 370h240" stroke-width="22"/>
+    <path d="M110 100v250" stroke-width="20"/>
+  </g>
+  <g fill="none" stroke="#C9B98F" stroke-width="2" stroke-dasharray="14 12">
+    <path d="M92 290h816"/>
+    <path d="M380 84v472"/>
+  </g>
+  <!-- entrance -->
+  <g>
+    <rect x="352" y="540" width="56" height="26" rx="4" fill="#17402F"/>
+    <path d="M366 566v-14m14 14v-14" stroke="#C6A15B" stroke-width="3"/>
+    <text x="380" y="600" text-anchor="middle" font-size="15" fill="#42513F" letter-spacing="2">MAIN GATE</text>
+  </g>
+  <!-- landmark chips -->
+  <g font-size="13" fill="#3F4A3C" text-anchor="middle" letter-spacing="1.5">
+    <rect x="118" y="106" width="86" height="24" rx="12" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <text x="161" y="122">MOSQUE</text>
+    <rect x="430" y="106" width="80" height="24" rx="12" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <text x="470" y="122">SCHOOL</text>
+    <rect x="700" y="420" width="120" height="24" rx="12" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <text x="760" y="436">COMMERCIAL</text>
+  </g>
+  <!-- labels -->
+  <g font-size="17" fill="#5A664F" letter-spacing="3" text-anchor="middle">
+    <text x="235" y="340">BLOCK A</text>
+    <text x="540" y="340">BLOCK B</text>
+    <text x="490" y="375" font-size="14" fill="#5F7A4F">CENTRAL PARK</text>
+    <text x="740" y="205" font-size="15" fill="#5E7C82">LAKE</text>
+    <text x="755" y="360">BLOCK C</text>
+    <text x="220" y="375">BLOCK D</text>
+  </g>
+  <!-- north arrow -->
+  <g transform="translate(925,105)">
+    <circle r="26" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <path d="M0 -16l7 22-7-5-7 5z" fill="#17402F"/>
+    <text y="38" text-anchor="middle" font-size="12" fill="#5A664F" letter-spacing="2">N</text>
+  </g>
+</svg>

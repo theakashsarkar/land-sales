@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.vercel
+server/data/inquiries.log.json
+.DS_Store

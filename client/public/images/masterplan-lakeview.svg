@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" font-family="Georgia, serif">
+  <rect width="1000" height="640" fill="#F4F0E5"/>
+  <g fill="#EAE4D2" stroke="#DCD5BF" stroke-width="1">
+    <rect x="70" y="60" width="860" height="520" rx="6"/>
+  </g>
+  <!-- lakeshore (east side) -->
+  <path d="M930 60c-70 40-90 120-60 190s10 150-60 200-90 100-60 130h180z" fill="#AFD0D6"/>
+  <path d="M918 84c-56 36-72 108-46 172s8 136-48 182c-20 16-34 32-40 48" stroke="#C4DEE2" stroke-width="10" fill="none" opacity="0.8"/>
+  <!-- promenade -->
+  <path d="M790 70c-20 90-30 160 0 230s20 160-40 230" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round"/>
+  <!-- zones -->
+  <g fill="#E7E0CB" stroke="#CFC7AE" stroke-width="1">
+    <!-- residential courts A -->
+    <g>
+      <rect x="110" y="100" width="280" height="170"/>
+      <path d="M180 100v170M250 100v170M320 100v170M110 185h280" fill="none"/>
+    </g>
+    <!-- residential courts B -->
+    <g>
+      <rect x="110" y="330" width="280" height="180"/>
+      <path d="M180 330v180M250 330v180M320 330v180M110 420h280" fill="none"/>
+    </g>
+    <!-- commercial spine -->
+    <g>
+      <rect x="470" y="100" width="250" height="130" fill="#E2D9BE"/>
+      <path d="M532 100v130M594 100v130M656 100v130M470 165h250" fill="none"/>
+    </g>
+    <!-- community -->
+    <rect x="470" y="420" width="250" height="90" rx="10" fill="#BBD2A8"/>
+  </g>
+  <!-- roads -->
+  <g fill="none" stroke="#FFFFFF" stroke-linecap="round">
+    <path d="M80 300h700" stroke-width="30"/>
+    <path d="M430 80v480" stroke-width="26"/>
+    <path d="M110 470h280" stroke-width="18"/>
+  </g>
+  <g fill="none" stroke="#C9B98F" stroke-width="2" stroke-dasharray="14 12">
+    <path d="M92 300h676"/>
+  </g>
+  <!-- entrance -->
+  <g>
+    <rect x="404" y="540" width="52" height="24" rx="4" fill="#17402F"/>
+    <text x="430" y="600" text-anchor="middle" font-size="15" fill="#42513F" letter-spacing="2">GATE 2</text>
+  </g>
+  <g font-size="13" fill="#3F4A3C" text-anchor="middle" letter-spacing="1.5">
+    <rect x="126" y="106" width="86" height="24" rx="12" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <text x="169" y="122">MOSQUE</text>
+    <rect x="486" y="106" width="110" height="24" rx="12" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <text x="541" y="122">SHOWROOMS</text>
+    <rect x="490" y="450" width="110" height="24" rx="12" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <text x="545" y="466">COMMUNITY</text>
+  </g>
+  <g font-size="17" fill="#5A664F" letter-spacing="3" text-anchor="middle">
+    <text x="250" y="300">ZONE A</text>
+    <text x="250" y="318" font-size="12" fill="#8A8468">RESIDENTIAL COURTS</text>
+    <text x="250" y="530">ZONE B</text>
+    <text x="595" y="250">COMMERCIAL SPINE</text>
+    <text x="595" y="390" font-size="14" fill="#5F7A4F">CENTRAL GREEN</text>
+    <text x="855" y="330" font-size="15" fill="#5E7C82" transform="rotate(-72 855 330)">LAKEFRONT</text>
+  </g>
+  <g transform="translate(120,560)">
+    <circle r="24" fill="#FBF8EF" stroke="#D8D0B8"/>
+    <path d="M0 -15l6.5 20-6.5-4.6-6.5 4.6z" fill="#17402F"/>
+    <text y="36" text-anchor="middle" font-size="12" fill="#5A664F" letter-spacing="2">N</text>
+  </g>
+</svg>
