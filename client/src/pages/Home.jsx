@@ -162,61 +162,61 @@ export default function Home() {
       </section>
 
       {/* ------------------------------------------------ Featured projects */}
-      <section className="section section--warm" id="projects">
-        <div className="container">
-          <div className="projects__head">
-            <SectionHeading
-              eyebrow="Our Projects"
-              title="Explore Our Projects"
-              description="Master-planned communities in Dhaka's fastest-growing corridors — each one selected for location, legality and long-term value."
-            />
-            <Reveal>
-              <Link to="/projects" className="btn btn--outline">
-                View All Projects
-              </Link>
-            </Reveal>
-          </div>
-          <div className="projects__grid">
-            {projects.filter((p) => p.featured).map((p, i) => (
-              <ProjectCard key={p.id} project={p} delay={i * 90} />
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* <section className="section section--warm" id="projects"> */}
+      {/*   <div className="container"> */}
+      {/*     <div className="projects__head"> */}
+      {/*       <SectionHeading */}
+      {/*         eyebrow="Our Projects" */}
+      {/*         title="Explore Our Projects" */}
+      {/*         description="Master-planned communities in Dhaka's fastest-growing corridors — each one selected for location, legality and long-term value." */}
+      {/*       /> */}
+      {/*       <Reveal> */}
+      {/*         <Link to="/projects" className="btn btn--outline"> */}
+      {/*           View All Projects */}
+      {/*         </Link> */}
+      {/*       </Reveal> */}
+      {/*     </div> */}
+      {/*     <div className="projects__grid"> */}
+      {/*       {projects.filter((p) => p.featured).map((p, i) => ( */}
+      {/*         <ProjectCard key={p.id} project={p} delay={i * 90} /> */}
+      {/*       ))} */}
+      {/*     </div> */}
+      {/*   </div> */}
+      {/* </section> */}
+      {/**/}
       {/* ------------------------------------------------ Highlight (flagship) */}
-      <section className="section">
-        <div className="container highlight__grid">
-          <Reveal className="highlight__media">
-            <img src="/images/highlight.jpg" alt={`${flagship.name} — planned landscape`} />
-            <span className="highlight__chip">
-              <Icon name="layers" size={17} />
-              {flagship.totalPlots}+ Plots · {flagship.totalArea}
-            </span>
-          </Reveal>
-          <div>
-            <SectionHeading
-              eyebrow={`Featured Project — ${flagship.name}`}
-              title="A Better Place to Build Your Future"
-              description={flagship.shortDescription}
-            />
-            <Reveal delay={120}>
-              <ul className="highlight__list">
-                {HIGHLIGHT_FEATURES.map((f) => (
-                  <li key={f}>
-                    <Icon name="check-circle" size={17} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <Link to={`/projects/${flagship.slug}`} className="btn btn--primary btn--lg">
-                Explore Project
-                <Icon name="arrow-right" size={16} />
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      {/* <section className="section"> */}
+      {/*   <div className="container highlight__grid"> */}
+      {/*     <Reveal className="highlight__media"> */}
+      {/*       <img src="/images/highlight.jpg" alt={`${flagship.name} — planned landscape`} /> */}
+      {/*       <span className="highlight__chip"> */}
+      {/*         <Icon name="layers" size={17} /> */}
+      {/*         {flagship.totalPlots}+ Plots · {flagship.totalArea} */}
+      {/*       </span> */}
+      {/*     </Reveal> */}
+      {/*     <div> */}
+      {/*       <SectionHeading */}
+      {/*         eyebrow={`Featured Project — ${flagship.name}`} */}
+      {/*         title="A Better Place to Build Your Future" */}
+      {/*         description={flagship.shortDescription} */}
+      {/*       /> */}
+      {/*       <Reveal delay={120}> */}
+      {/*         <ul className="highlight__list"> */}
+      {/*           {HIGHLIGHT_FEATURES.map((f) => ( */}
+      {/*             <li key={f}> */}
+      {/*               <Icon name="check-circle" size={17} /> */}
+      {/*               {f} */}
+      {/*             </li> */}
+      {/*           ))} */}
+      {/*         </ul> */}
+      {/*         <Link to={`/projects/${flagship.slug}`} className="btn btn--primary btn--lg"> */}
+      {/*           Explore Project */}
+      {/*           <Icon name="arrow-right" size={16} /> */}
+      {/*         </Link> */}
+      {/*       </Reveal> */}
+      {/*     </div> */}
+      {/*   </div> */}
+      {/* </section> */}
 
       {/* ------------------------------------------------ Categories */}
       {/* <section className="section section--warm"> */}
