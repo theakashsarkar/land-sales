@@ -219,35 +219,35 @@ export default function Home() {
       </section>
 
       {/* ------------------------------------------------ Categories */}
-      <section className="section section--warm">
-        <div className="container">
-          <SectionHeading
-            align="center"
-            eyebrow="Land / Plots"
-            title="Find the Right Plot for Your Future"
-            description="Whatever your goal — a family home, a business address or a long-term asset — there is a plot here with your name on it."
-          />
-          <div className="cats__grid">
-            {categories.map((cat, i) => (
-              <Reveal className="cat-card" key={cat.type} delay={i * 80}>
-                <div className="cat-card__media">
-                  <img src={cat.image} alt={cat.title} loading="lazy" />
-                  <span className="cat-card__icon">
-                    <Icon name={cat.icon} size={22} />
-                  </span>
-                </div>
-                <div className="cat-card__body">
-                  <h3 className="cat-card__title">{cat.title}</h3>
-                  <p className="cat-card__desc">{cat.description}</p>
-                  <Link to={`/plots?type=${cat.type}`} className="text-link">
-                    Explore <Icon name="arrow-right" size={15} />
-                  </Link>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* <section className="section section--warm"> */}
+      {/*   <div className="container"> */}
+      {/*     <SectionHeading */}
+      {/*       align="center" */}
+      {/*       eyebrow="Land / Plots" */}
+      {/*       title="Find the Right Plot for Your Future" */}
+      {/*       description="Whatever your goal — a family home, a business address or a long-term asset — there is a plot here with your name on it." */}
+      {/*     /> */}
+      {/*     <div className="cats__grid"> */}
+      {/*       {categories.map((cat, i) => ( */}
+      {/*         <Reveal className="cat-card" key={cat.type} delay={i * 80}> */}
+      {/*           <div className="cat-card__media"> */}
+      {/*             <img src={cat.image} alt={cat.title} loading="lazy" /> */}
+      {/*             <span className="cat-card__icon"> */}
+      {/*               <Icon name={cat.icon} size={22} /> */}
+      {/*             </span> */}
+      {/*           </div> */}
+      {/*           <div className="cat-card__body"> */}
+      {/*             <h3 className="cat-card__title">{cat.title}</h3> */}
+      {/*             <p className="cat-card__desc">{cat.description}</p> */}
+      {/*             <Link to={`/plots?type=${cat.type}`} className="text-link"> */}
+      {/*               Explore <Icon name="arrow-right" size={15} /> */}
+      {/*             </Link> */}
+      {/*           </div> */}
+      {/*         </Reveal> */}
+      {/*       ))} */}
+      {/*     </div> */}
+      {/*   </div> */}
+      {/* </section> */}
 
       {/* ------------------------------------------------ Available plots */}
       <section className="section">
