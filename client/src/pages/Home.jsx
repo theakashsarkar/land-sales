@@ -272,25 +272,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------------------------------------ Search */}
-      <section className="section section--warm">
-        <div className="container">
-          <SectionHeading
-            align="center"
-            eyebrow="Plot Finder"
-            title="Search Plots That Match Your Plan"
-            description="Filter by project, type, size, price and availability — we'll show you exactly what's on the table."
-          />
-          <Reveal>
-            <SearchPanel
-              projects={projects}
-              values={search}
-              onChange={setSearch}
-              onSearch={runSearch}
-            />
-          </Reveal>
-        </div>
-      </section>
+      {/* {/* ------------------------------------------------ Search */}
+      {/* <section className="section section--warm"> */}
+      {/*   <div className="container"> */}
+      {/*     <SectionHeading */}
+      {/*       align="center" */}
+      {/*       eyebrow="Plot Finder" */}
+      {/*       title="Search Plots That Match Your Plan" */}
+      {/*       description="Filter by project, type, size, price and availability — we'll show you exactly what's on the table." */}
+      {/*     /> */}
+      {/*     <Reveal> */}
+      {/*       <SearchPanel */}
+      {/*         projects={projects} */}
+      {/*         values={search} */}
+      {/*         onChange={setSearch} */}
+      {/*         onSearch={runSearch} */}
+      {/*       /> */}
+      {/*     </Reveal> */}
+      {/*   </div> */}
+      {/* </section> */}
 
       {/* ------------------------------------------------ Location */}
       <section className="section" id="location">
@@ -326,28 +326,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------------------------------------ Amenities */}
-      <section className="section section--warm" id="amenities">
-        <div className="container">
-          <SectionHeading
-            align="center"
-            eyebrow="Amenities"
-            title="Everything a Community Needs"
-            description="Our townships are planned around real life — faith, education, health, play and commerce are all within a short walk."
-          />
-          <div className="amen__grid">
-            {amenities.map((a, i) => (
-              <Reveal className="amen-card" key={a.name} delay={(i % 5) * 60}>
-                <span className="amen-card__icon">
-                  <Icon name={a.icon} size={24} />
-                </span>
-                <h3 className="amen-card__title">{a.name}</h3>
-                <p className="amen-card__desc">{a.description}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* {/* ------------------------------------------------ Amenities */}
+      {/* <section className="section section--warm" id="amenities"> */}
+      {/*   <div className="container"> */}
+      {/*     <SectionHeading */}
+      {/*       align="center" */}
+      {/*       eyebrow="Amenities" */}
+      {/*       title="Everything a Community Needs" */}
+      {/*       description="Our townships are planned around real life — faith, education, health, play and commerce are all within a short walk." */}
+      {/*     /> */}
+      {/*     <div className="amen__grid"> */}
+      {/*       {amenities.map((a, i) => ( */}
+      {/*         <Reveal className="amen-card" key={a.name} delay={(i % 5) * 60}> */}
+      {/*           <span className="amen-card__icon"> */}
+      {/*             <Icon name={a.icon} size={24} /> */}
+      {/*           </span> */}
+      {/*           <h3 className="amen-card__title">{a.name}</h3> */}
+      {/*           <p className="amen-card__desc">{a.description}</p> */}
+      {/*         </Reveal> */}
+      {/*       ))} */}
+      {/*     </div> */}
+      {/*   </div> */}
+      {/* </section> */}
 
       {/* ------------------------------------------------ Why choose us */}
       <section className="section">
@@ -436,18 +436,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ------------------------------------------------ Gallery */}
-      <section className="section">
-        <div className="container">
-          <SectionHeading
-            align="center"
-            eyebrow="Gallery"
-            title="Life Inside Our Communities"
-            description="Roads, landscapes, site visits and progress — an honest look at how our projects grow."
-          />
-          <Gallery images={gallery} columns={3} aspect="4/3" />
-        </div>
-      </section>
+      {/* {/* ------------------------------------------------ Gallery */}
+      {/* <section className="section"> */}
+      {/*   <div className="container"> */}
+      {/*     <SectionHeading */}
+      {/*       align="center" */}
+      {/*       eyebrow="Gallery" */}
+      {/*       title="Life Inside Our Communities" */}
+      {/*       description="Roads, landscapes, site visits and progress — an honest look at how our projects grow." */}
+      {/*     /> */}
+      {/*     <Gallery images={gallery} columns={3} aspect="4/3" /> */}
+      {/*   </div> */}
+      {/* </section> */}
 
       {/* ------------------------------------------------ Site visit CTA */}
       <CTABand />

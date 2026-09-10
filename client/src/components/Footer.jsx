@@ -66,14 +66,14 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer__map">
-        <iframe
-          title="Office location"
-          src={mapEmbedUrl(c.coordinates, 0.012)}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-      </div>
+      {/* <div className="footer__map"> */}
+      {/*   <iframe */}
+      {/*     title="Office location" */}
+      {/*     src={mapEmbedUrl(c.coordinates, 0.012)} */}
+      {/*     loading="lazy" */}
+      {/*     referrerPolicy="no-referrer-when-downgrade" */}
+      {/*   /> */}
+      {/* </div> */}
 
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
