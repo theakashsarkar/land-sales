@@ -374,55 +374,55 @@ export default function Home() {
       </section>
 
       {/* ------------------------------------------------ Investment */}
-      <section className="section invest">
-        <div className="container invest__grid">
-          <div>
-            <SectionHeading
-              light
-              eyebrow="Investment"
-              title="Invest in Land. Build Your Future."
-              description="Bricks depreciate, well-located land compounds. Here's why our clients treat plots as the cornerstone of their portfolio."
-            />
-            <Reveal delay={100}>
-              <div className="invest__points">
-                {investmentPoints.map((pt) => (
-                  <div className="invest__point" key={pt.title}>
-                    <span className="invest__point-icon">
-                      <Icon name={pt.icon} size={20} />
-                    </span>
-                    <div>
-                      <strong>{pt.title}</strong>
-                      <span>{pt.description}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="invest__stat">
-                <strong>12–15%</strong>
-                <span>
-                  historical annual appreciation for planned-township land in
-                  greater Dhaka over the last decade (illustrative).
-                </span>
-              </div>
-            </Reveal>
-          </div>
-          <Reveal delay={180}>
-            <div className="invest__side">
-              <img
-                src="/images/invest-city.jpg"
-                alt="Dhaka's eastern growth corridor"
-                style={{ borderRadius: "var(--r-lg)", boxShadow: "var(--shadow-lg)" }}
-              />
-              <div style={{ marginTop: 28 }}>
-                <Link to="/contact?interest=advisor" className="btn btn--gold btn--lg">
-                  <Icon name="phone" size={17} />
-                  Talk to an Investment Advisor
-                </Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* <section className="section invest"> */}
+      {/*   <div className="container invest__grid"> */}
+      {/*     <div> */}
+      {/*       <SectionHeading */}
+      {/*         light */}
+      {/*         eyebrow="Investment" */}
+      {/*         title="Invest in Land. Build Your Future." */}
+      {/*         description="Bricks depreciate, well-located land compounds. Here's why our clients treat plots as the cornerstone of their portfolio." */}
+      {/*       /> */}
+      {/*       <Reveal delay={100}> */}
+      {/*         <div className="invest__points"> */}
+      {/*           {investmentPoints.map((pt) => ( */}
+      {/*             <div className="invest__point" key={pt.title}> */}
+      {/*               <span className="invest__point-icon"> */}
+      {/*                 <Icon name={pt.icon} size={20} /> */}
+      {/*               </span> */}
+      {/*               <div> */}
+      {/*                 <strong>{pt.title}</strong> */}
+      {/*                 <span>{pt.description}</span> */}
+      {/*               </div> */}
+      {/*             </div> */}
+      {/*           ))} */}
+      {/*         </div> */}
+      {/*         <div className="invest__stat"> */}
+      {/*           <strong>12–15%</strong> */}
+      {/*           <span> */}
+      {/*             historical annual appreciation for planned-township land in */}
+      {/*             greater Dhaka over the last decade (illustrative). */}
+      {/*           </span> */}
+      {/*         </div> */}
+      {/*       </Reveal> */}
+      {/*     </div> */}
+      {/*     <Reveal delay={180}> */}
+      {/*       <div className="invest__side"> */}
+      {/*         <img */}
+      {/*           src="/images/invest-city.jpg" */}
+      {/*           alt="Dhaka's eastern growth corridor" */}
+      {/*           style={{ borderRadius: "var(--r-lg)", boxShadow: "var(--shadow-lg)" }} */}
+      {/*         /> */}
+      {/*         <div style={{ marginTop: 28 }}> */}
+      {/*           <Link to="/contact?interest=advisor" className="btn btn--gold btn--lg"> */}
+      {/*             <Icon name="phone" size={17} /> */}
+      {/*             Talk to an Investment Advisor */}
+      {/*           </Link> */}
+      {/*         </div> */}
+      {/*       </div> */}
+      {/*     </Reveal> */}
+      {/*   </div> */}
+      {/* </section> */}
 
       {/* ------------------------------------------------ Testimonials */}
       <section className="section section--warm">
