@@ -9,6 +9,9 @@ import ProjectDetails from "./pages/ProjectDetails.jsx";
 import Plots from "./pages/Plots.jsx";
 import PlotDetails from "./pages/PlotDetails.jsx";
 import Contact from "./pages/Contact.jsx";
+import { AdminAuthProvider } from "./admin/AuthContext.jsx";
+import AdminApp from "./admin/AdminApp.jsx";
+import "./admin/admin.css";
 
 function ScrollManager() {
   const location = useLocation();
@@ -34,6 +37,16 @@ function ScrollManager() {
 }
 
 export default function App() {
+  const location = useLocation();
+  // Admin console renders standalone — no marketing chrome.
+  if (location.pathname.startsWith("/admin")) {
+    return (
+      <AdminAuthProvider>
+        <AdminApp />
+      </AdminAuthProvider>
+    );
+  }
+
   return (
     <DataProvider>
       <ScrollManager />

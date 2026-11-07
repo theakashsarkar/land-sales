@@ -1,0 +1,262 @@
+// Bhumi Landmarks — admin/financial backend schema.
+//
+// Provider is sqlite for local/dev (zero infrastructure). The schema is
+// written to be Postgres-ready: money columns use Decimal and no
+// SQLite-specific features are used. To move to PostgreSQL change the
+// provider, adjust DATABASE_URL, and (optionally) add @db.Decimal(18, 2)
+// native types to money columns.
+//
+// NOTE: SQLite has no native enums or JSON columns, so enumerated values
+// (role, status, method, ...) are validated String columns enforced by zod
+// at every API boundary, and JSON metadata is stored as a JSON string.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  // "SUPER_ADMIN" | "USER" (validated by zod; SQLite has no enums)
+  role         String   @default("USER")
+  isActive     Boolean  @default(true)
+  // Set whenever the password changes: access tokens issued before this
+  // instant are rejected, so a password change kills stolen sessions.
+  passwordChangedAt DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  assignedProjects ProjectUser[]
+  refreshTokens    RefreshToken[]
+  auditLogs        AuditLog[]
+  recordHistory    RecordHistory[]
+  createdRecords   FinancialRecord[]  @relation("FinancialRecordCreatedBy")
+  recordedPayments Transaction[]      @relation("TransactionCreatedBy")
+  voidedPayments   Transaction[]      @relation("TransactionVoidedBy")
+  issuedInvoices   Invoice[]          @relation("InvoiceCreatedBy")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  // short unique code shown in dropdowns (e.g. "GVT")
+  code        String   @unique
+  description String?
+  location    String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  users            ProjectUser[]
+  financialRecords FinancialRecord[]
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  // lowercase(name): SQLite UNIQUE is case-sensitive, so uniqueness is
+  // enforced on the normalized key (case-insensitive dedupe).
+  nameKey     String   @unique
+  description String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  financialRecords FinancialRecord[]
+}
+
+// user-project access grants: a USER may only touch financial data of
+// projects granted here. SUPER_ADMIN implicitly has access to everything.
+model ProjectUser {
+  projectId    String
+  userId       String
+  assignedAt   DateTime @default(now())
+  assignedById String?
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, userId])
+  @@index([userId])
+}
+
+model FinancialRecord {
+  id           String   @id @default(cuid())
+  code         String   @unique // FIN-YYYY-NNNNNN
+  title        String
+  partyName    String // buyer / client name
+  partyPhone   String?
+  description  String?
+  projectId    String
+  categoryId   String
+  totalAmount  Decimal
+  // "ACTIVE" | "CANCELLED"
+  status       String   @default("ACTIVE")
+  createdById  String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  project      Project        @relation(fields: [projectId], references: [id])
+  category     Category       @relation(fields: [categoryId], references: [id])
+  createdBy    User           @relation("FinancialRecordCreatedBy", fields: [createdById], references: [id])
+  transactions Transaction[]
+  invoices     Invoice[]
+
+  @@index([projectId])
+  @@index([categoryId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([partyName])
+}
+
+// A financial transaction (payment) posted against a financial record.
+// Rows are never deleted: corrections happen by VOID-ing, which keeps the
+// full history intact. Only VALID payments count toward the paid balance.
+model Transaction {
+  id                String   @id @default(cuid())
+  financialRecordId String
+  // "PAYMENT" | "ADJUSTMENT"
+  type              String   @default("PAYMENT")
+  amount            Decimal
+  paidAt            DateTime
+  // "CASH" | "BANK" | "CHEQUE" | "ONLINE" | "OTHER"
+  method            String   @default("CASH")
+  // external reference (bank txn id, receipt no). Unique per record so a
+  // retried/double-submitted payment with the same reference is rejected.
+  reference         String?
+  note              String?
+  // "VALID" | "VOID"
+  status            String   @default("VALID")
+  createdById       String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  voidedById        String?
+  voidedAt          DateTime?
+  voidReason        String?
+
+  financialRecord FinancialRecord @relation(fields: [financialRecordId], references: [id])
+  createdBy       User            @relation("TransactionCreatedBy", fields: [createdById], references: [id])
+  voidedBy        User?           @relation("TransactionVoidedBy", fields: [voidedById], references: [id])
+  receipts        Invoice[]
+
+  @@unique([financialRecordId, reference])
+  @@index([financialRecordId, paidAt])
+  @@index([status])
+  @@index([createdById])
+}
+
+// Field-level audit history for business records: one row per changed
+// field with previous and updated values, plus row-level lifecycle events.
+model RecordHistory {
+  id         String   @id @default(cuid())
+  entityType String // "FinancialRecord" | "Transaction" | "Invoice" | "Project" | "Category" | "User"
+  entityId   String
+  // "CREATED" | "UPDATED" | "PAYMENT_RECORDED" | "VOIDED" | "CANCELLED" | "STATUS_CHANGED" | ...
+  action     String
+  field      String? // null for lifecycle events
+  oldValue   String?
+  newValue   String?
+  actorId    String?
+  createdAt  DateTime @default(now())
+
+  actor User? @relation(fields: [actorId], references: [id])
+
+  @@index([entityType, entityId, createdAt])
+  @@index([actorId])
+}
+
+model Invoice {
+  id                String    @id @default(cuid())
+  // INV-YYYY-NNNNNN for invoices, RCP-YYYY-NNNNNN for receipts (unique across the table)
+  number            String    @unique
+  // "INVOICE" | "RECEIPT"
+  type              String
+  financialRecordId String
+  transactionId     String? // set when type = RECEIPT
+  // "ISSUED" | "CANCELLED"
+  status            String    @default("ISSUED")
+  issueDate         DateTime  @default(now())
+  dueDate           DateTime?
+  subtotal          Decimal
+  total             Decimal
+  notes             String?
+  // denormalised snapshots at issue time — invoices are historical
+  // documents and must not change when the underlying records change
+  partyName         String
+  partyPhone        String?
+  projectCode       String
+  projectTitle      String
+  categoryTitle     String
+  recordCode        String
+  createdById       String
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  cancelledAt       DateTime?
+  cancelledById     String?
+  cancelReason      String?
+
+  financialRecord FinancialRecord @relation(fields: [financialRecordId], references: [id])
+  transaction     Transaction?    @relation(fields: [transactionId], references: [id])
+  createdBy       User            @relation("InvoiceCreatedBy", fields: [createdById], references: [id])
+  items           InvoiceItem[]
+
+  @@index([financialRecordId])
+  @@index([type, status])
+  @@index([issueDate])
+}
+
+model InvoiceItem {
+  id          String  @id @default(cuid())
+  invoiceId   String
+  description String
+  quantity    Decimal @default(1)
+  unitPrice   Decimal
+  amount      Decimal
+
+  invoice Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@index([invoiceId])
+}
+
+// System-level audit trail (security events, admin mutations).
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String?
+  // "AUTH_LOGIN", "AUTH_LOGIN_FAILED", "AUTH_LOGOUT", "USER_CREATED", ...
+  action     String
+  entityType String?
+  entityId   String?
+  metadata   String? // JSON string
+  ip         String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+  @@index([entityType, entityId])
+  @@index([createdAt])
+  @@index([action])
+}
+
+// Server-side session store for refresh tokens (hashed at rest). Logout
+// revokes the row; reuse of a revoked token revokes the whole family.
+model RefreshToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
